@@ -17,7 +17,9 @@ app.get('/', (req, res) => {
 
 app.use('/api/signup',require("./routes/signup"));
 app.use('/api/login',require("./routes/login"));
-app.use('/api/createdocument',require("./routes/document"));
+app.use('/api/createdocument',require("./routes/createdocument"));
+app.use('/api/documents',require("./routes/documents"));
+app.use('/api/updatedocument/:id',require("./routes/updatedocument"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

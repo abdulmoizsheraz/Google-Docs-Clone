@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.style-head{
+font-size: 4.1rem;
+text-align: center;
+/* background-image: linear-gradient(to right, #2b5876, #4e4376); */
+background-clip: text; 
+color: transparent; 
+font-weight: bolder;
+}
+.createNow{
+    margin: 23px;
+    padding: 12px;
+    color: white;
+    width:150px;
+    border-radius: 23px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.923);
+    cursor:pointer;
+  }
+  .createNow:hover{
+    margin: 23px;
+    padding: 12px;
+    color: white;
+    width:150px;
+    border-radius: 23px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor:pointer;
+  }
