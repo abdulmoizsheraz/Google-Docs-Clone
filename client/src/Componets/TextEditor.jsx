@@ -50,6 +50,7 @@ const TextEditor = ({ update, id }) => {
   }
   const updatedocument= async ()=>{
     try {
+
       const response = await fetch(`http://localhost:5000/api/updatedocument/${id}`,{
         method: 'POST',
         headers: {
