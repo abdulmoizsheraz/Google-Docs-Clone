@@ -20,7 +20,7 @@ body("password").isLength({min:8}).withMessage("The password should have minimum
   try {
     const existingUser = await User.findOne({email:req.body.email});
     if(existingUser){
-      res.send("User Already Exists Try to Login");
+      return res.status(400).json({ error: "Sorry a user with this email already exists" })
     }else{
       const {email,password,name}=req.body;
       const salt= await bcrypt.genSalt(10);
@@ -38,10 +38,10 @@ user:{
       const authtoken=jwt.sign(data,JWT_SECRET);
       console.log(authtoken);
       await user.save();
-      res.send("User created successfully.");
+    return   res.status(200).json({ authToken: authtoken, message: "User created successfully." });
     }
   } catch (err) {
-    res.status(500).send("Error while creating user.");
+   return  res.status(500).send("Error while creating user.");
   }
   })
 

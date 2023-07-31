@@ -30,3 +30,20 @@ font-weight: bolder;
     border: 1px solid rgba(255, 255, 255, 0.3);
     cursor:pointer;
   }
+  .dashboard{
+    
+  }
+  .createnew {
+    position: relative;
+    height: 300px;
+    width: 100vw;
+    background-image: url("/create.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
+  }
+  .documentstable{
+width:100%;
+  }
+  
+  

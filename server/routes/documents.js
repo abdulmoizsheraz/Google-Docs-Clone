@@ -3,7 +3,6 @@ const router = express.Router();
 const Document = require('../models/document');
 const ExtractUser=require("../utils/ExtractUser")
 
-// Assuming the user ID is passed as a query parameter named "userId"
 router.get('/',ExtractUser, async (req, res) => {
   try {
     const userId = req.user.id 

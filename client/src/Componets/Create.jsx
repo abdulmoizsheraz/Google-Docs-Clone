@@ -1,10 +1,9 @@
 import React from 'react'
-
+import {Link } from "react-router-dom";
 const Create = () => {
   return (
     <div className='mt-20'>
-        <a className='createNow  bg-gradient-to-r from-cyan-500 to-blue-500 '>Start Creating </a>
-
+        <Link to="/dashboard" className='createNow bg-gradient-to-b from-purple-600 to-blue-600 '>Start Creating </Link>
     </div>
   )
 }
