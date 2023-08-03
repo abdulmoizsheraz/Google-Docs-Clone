@@ -17,7 +17,7 @@ mongoose.connect("mongodb://localhost:27017",{
 app.get('/', (req, res) => {
   res.send('Hello World1!')
 })
-
+// 
 app.use('/api/signup',require("./routes/signup"));
 app.use('/api/login',require("./routes/login"));
 app.use('/api/createdocument',require("./routes/createdocument"));
@@ -25,6 +25,7 @@ app.use('/api/documents',require("./routes/documents"));
 app.use('/api/',require("./routes/updatedocument"));
 app.use('/api/',require("./routes/deletedocument"));
 app.use('/api/',require("./routes/getdocument"));
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -8,7 +8,7 @@ router.get('/getdocument/:id', ExtractUser, async (req, res) => {
     const userId = req.user.id;
     const documentId = req.params.id;
 
-    // Find a document with the specified ID and belonging to the user
+   
     const document = await Document.findOne({ _id: documentId, userId: userId });
 
     if (!document) {

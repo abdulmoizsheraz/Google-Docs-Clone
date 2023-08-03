@@ -20,11 +20,12 @@ const Signup = () => {
           email,
           password,
         }),
-      });
-    
-      const json = await res.json();
-      if (json.status === "ok") {
-        localStorage.setItem("auth", json.authtoken);
+      })
+
+      if (res.ok) {
+const data= await res.json();
+localStorage.setItem("authToken",data.authToken);
+        alert("Ok")
         setname("");
         setemail("");
         setpassword("");

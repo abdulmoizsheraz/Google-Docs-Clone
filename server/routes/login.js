@@ -30,7 +30,7 @@ router.post('/', [
             }
         }
         const authtoken = jwt.sign(data, JWT_SECRET);
-        res.send(authtoken);
+        res.status(200).json({ authToken: authtoken, message: "Welcome back to Google Docs Clone"+user.name });
     } catch (err) {
         res.status(500).send("Error letting you in !");
     }

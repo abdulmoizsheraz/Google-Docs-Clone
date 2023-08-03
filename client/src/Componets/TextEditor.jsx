@@ -6,18 +6,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const TextEditor = ({ update, id }) => {
+  const authToken=localStorage.getItem("authToken");
   const quillRef = useRef();
   const [title, settitle] = useState("");
   const [isdisabled, setisdisabled] = useState(false);
   const [btntext, setbtntext] = useState("Save");
-  const [Content, setContent] = useState("");
+  const [Content, setContent] = useState("Hi My Name is Moiz");
   
   const url = 'http://localhost:5000/api/createdocument';
   const options = {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRjNjBiYWY0OTk3YTkxMjJhNmMyZDg0In0sImlhdCI6MTY5MDcwMDcxOX0.ZAYgDG1cyVSuihBiP8foIWHgJOjRx6V4DvYiqsepjaE"
+      "auth-token": authToken
     },
     body: JSON.stringify({ title: title, content: Content })
   };
@@ -40,7 +41,7 @@ const TextEditor = ({ update, id }) => {
           theme: "light",
         });
         setisdisabled(true);
-        setbtntext("Saved!")
+        setbtntext("Saved!");
       } else {
         alert("Your Content can't be Empty");
       }
@@ -50,12 +51,11 @@ const TextEditor = ({ update, id }) => {
   }
   const updatedocument= async ()=>{
     try {
-
       const response = await fetch(`http://localhost:5000/api/updatedocument/${id}`,{
-        method: 'POST',
+        method: 'PUT',
         headers: {
           "Content-Type": "application/json",
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRjNjBiYWY0OTk3YTkxMjJhNmMyZDg0In0sImlhdCI6MTY5MDcwMDcxOX0.ZAYgDG1cyVSuihBiP8foIWHgJOjRx6V4DvYiqsepjaE"
+          "auth-token": authToken
         },
         body: JSON.stringify({ title: title, content: Content })
       });
@@ -80,12 +80,16 @@ const TextEditor = ({ update, id }) => {
     }
     
   }
+useEffect(() => {
+localStorage.setItem("content",Content)
+setContent(localStorage.getItem("content"));
+}, [Content])
 
   return (
     <>
       <input type="text" className='enabled:hover:border-purple-600  p-2 m-3 rounded-xl border border-purple-600' placeholder='Title' value={title} onChange={(e) => { settitle(e.target.value) }} />
       <div className='flex flex-col justify-center '>
-      <ReactQuill theme="snow" ref={quillRef} onChange={handlechangequill} />
+      <ReactQuill theme="snow" ref={quillRef}  onChange={handlechangequill} />
         {update !== true ? <button disabled={isdisabled} className="bg-purple-500 mt-10 text-white px-4 py-2 rounded-lg" onClick={savedocument}>
           {btntext}
         </button> : <button disabled={isdisabled} className="bg-purple-500 mt-10 text-white px-4 py-2 rounded-lg" onClick={updatedocument}>

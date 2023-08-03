@@ -32,7 +32,6 @@ router.put('/updatedocument/:id', ExtractUser, async (req, res) => {
       { $set: updatedDocument },
       { new: true }
     );
-
     res.status(200).json({ message: 'Document saved successfully!' });
   } catch (err) {
     console.error('Error updating document:', err);
